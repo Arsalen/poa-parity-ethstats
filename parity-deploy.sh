@@ -265,14 +265,6 @@ display_genesis() {
 
 }
 
-
-# display_accounts() {
-
-
-#   cat config/spec/accounts/$CHAIN_ENGINE
-
-# }
-
 display_accounts() {
 
   if [ "$CHAIN_ENGINE" == "aura" ]; then
