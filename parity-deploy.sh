@@ -266,10 +266,24 @@ display_genesis() {
 }
 
 
+# display_accounts() {
+
+
+#   cat config/spec/accounts/$CHAIN_ENGINE
+
+# }
+
 display_accounts() {
 
-
-  cat config/spec/accounts/$CHAIN_ENGINE
+  if [ "$CHAIN_ENGINE" == "aura" ]; then
+    for x in ` seq 1 $CHAIN_NODES ` ; do
+      VALIDATOR=`cat deployment/$x/address.txt`
+      sed -i -e "$(sed -n '/0x00Ea169ce7e0992960D3BdE6F5D539C955316432/=' config/spec/accounts/$CHAIN_ENGINE)i \"$VALIDATOR\": { \"balance\": \"1606938044258990275541962092341162602522202993782792835301375\" }," config/spec/accounts/$CHAIN_ENGINE
+    done
+    cat config/spec/accounts/$CHAIN_ENGINE
+  else
+    cat config/spec/accounts/$CHAIN_ENGINE
+  fi
 
 }
 
