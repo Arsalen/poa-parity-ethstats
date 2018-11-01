@@ -381,6 +381,6 @@ elif [ "$CHAIN_ENGINE" == "aura" ] || [ "$CHAIN_ENGINE" == "validatorset" ] || [
 else
 	echo "Could not find spec file: $CHAIN_ENGINE"
 fi
-
+chown -R $USER:$USER deployment/
 build_docker_config_ethstats
 select_exposed_container
