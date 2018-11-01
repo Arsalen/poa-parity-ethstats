@@ -381,6 +381,9 @@ elif [ "$CHAIN_ENGINE" == "aura" ] || [ "$CHAIN_ENGINE" == "validatorset" ] || [
 else
 	echo "Could not find spec file: $CHAIN_ENGINE"
 fi
-chown -R $USER:$USER deployment/
+for x in ` seq $CHAIN_NODES ` ; do
+mkdir -p data/$x/keys/parity  
+done
+chown -R $USER:$USER data/
 build_docker_config_ethstats
 select_exposed_container
